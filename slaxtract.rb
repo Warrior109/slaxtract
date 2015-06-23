@@ -1,3 +1,4 @@
+require 'csv'
 require 'slack'
 
 Slack.configure do |config|
@@ -6,12 +7,13 @@ end
 
 users = Slack.users_list
 
-users['members'].each do |user|
-  #puts user
-  puts "-----"
-  puts user['name']
-  puts user['profile']['first_name']
-  puts user['profile']['last_name']
-  puts user['profile']['email']
-  #puts "#{user["first_name"]} | #{user["last_name"]} | #{user["email"]}"
+CSV.open('dump.csv', 'wb') do |csv|
+  csv << ['Username', 'First Name', 'Last Name', 'Email']
+  users['members'].each do |user|
+    username = user['name']
+    first_name = user['profile']['first_name']
+    last_name = user['profile']['last_name']
+    email = user['profile']['email']
+    csv << [username, first_name, last_name, email]
+  end
 end
