@@ -17,3 +17,5 @@ CSV.open('dump.csv', 'wb') do |csv|
     csv << [username, first_name, last_name, email]
   end
 end
+
+puts "Exported #{users['members'].count} Users"
