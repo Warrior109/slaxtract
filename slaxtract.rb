@@ -1,6 +1,11 @@
 require 'csv'
 require 'slack'
 
+if ENV['slack_api_token'].nil?
+  puts 'Slack API token not configured.'
+  abort
+end
+
 Slack.configure do |config|
   config.token = ENV['slack_api_token']
 end
