@@ -24,4 +24,4 @@ CSV.open('dump.csv', 'wb') do |csv|
   end
 end
 
-puts "Exported #{users['members'].count} Users"
+puts "Exported #{users['members'].count} users to dump.csv."
