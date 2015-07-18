@@ -5,7 +5,13 @@ Slack.configure do |config|
   config.token = ENV['slack_api_token']
 end
 
-auth = Slack.auth_test
+begin
+  auth = Slack.auth_test
+rescue Faraday::Error::ConnectionFailed
+  puts 'Cannot communicate with Slack. Check your Internet connection.'
+  abort
+end
+
 unless auth['ok']
   puts 'There was a problem authenticating with Slack. Check your API token.'
   abort
