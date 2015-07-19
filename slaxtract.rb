@@ -7,8 +7,8 @@ end
 
 begin
   auth = Slack.auth_test
-rescue Faraday::Error::ConnectionFailed
-  puts 'Cannot communicate with Slack. Check your Internet connection.'
+rescue => e
+  puts "Error communicating with Slack: #{e}"
   abort
 end
 
@@ -31,7 +31,7 @@ begin
     end
   end
 rescue => e
-  puts "CSV Error: #{e}"
+  puts "Error saving dump.csv: #{e}"
   abort
 end
 
