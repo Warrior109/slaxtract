@@ -33,7 +33,7 @@ begin
     end
   end
 rescue => e
-  puts "Error saving dump.csv: #{e}"
+  puts "Error exporting to dump.csv: #{e}"
   abort
 end
 
