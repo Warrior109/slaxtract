@@ -37,4 +37,4 @@ rescue => e
   abort
 end
 
-puts "Exported #{users['members'].count} users to dump.csv."
+puts "Exported #{users['members'].count} user(s) to dump.csv."
